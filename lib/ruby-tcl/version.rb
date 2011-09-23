@@ -1,5 +1,3 @@
-module Ruby
-  module Tcl
-    VERSION = "0.0.1"
-  end
+module Tcl
+  VERSION = "0.1.0"
 end
