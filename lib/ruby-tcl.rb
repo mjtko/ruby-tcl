@@ -1,7 +1,7 @@
-require "ruby-tcl/version"
+require 'tcl'
+require "tcl/version"
+require "tcl/interp_helper"
+require "tcl/interp"
+require "tcl/proc"
+require "tcl/var"
 
-module Ruby
-  module Tcl
-    # Your code goes here...
-  end
-end

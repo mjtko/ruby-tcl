@@ -1,13 +1,15 @@
-require File.join(File.dirname(__FILE__), "test_helper")
+STDERR.puts Tcl::Interp.inspect
 
 class InterpTest < Test::Unit::TestCase
   def setup
     @interp = Tcl::Interp.new
+    @interp.eval('rename clock ""') if @interp.procs.include?('clock')
   end
   
   def test_load_from_file
     vars, procs = @interp.vars, @interp.procs
     @interp = Tcl::Interp.load_from_file(path_to_fixture("test.tcl"))
+    @interp.eval('rename clock ""') if @interp.procs.include?('clock')
 
     assert_equal ["a", "b"],       (@interp.vars - vars).sort
     assert_equal ["c", "d", "e"],  (@interp.procs - procs).sort

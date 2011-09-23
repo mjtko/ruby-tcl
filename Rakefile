@@ -18,17 +18,12 @@ require 'rake'
 require 'bueller'
 Bueller::Tasks.new
 
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:examples) do |examples|
-  examples.rspec_opts = '-Ispec'
+require 'rake/testtask'
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/*_test.rb']
+  t.verbose = true
 end
-
-RSpec::Core::RakeTask.new(:rcov) do |spec|
-  spec.rspec_opts = '-Ispec'
-  spec.rcov = true
-end
-
-task :default => :examples
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
@@ -40,3 +35,11 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+require 'rake/extensiontask'
+Rake::ExtensionTask.new('tcl')
+CLEAN.include ['**/*.{o,bundle,jar,so,obj,pdb,lib,def,exp,log}']
+
+task :test => :compile
+task :default => :test
+

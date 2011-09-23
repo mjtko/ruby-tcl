@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "test_helper")
+require "test_helper"
 
 class VarTest < Test::Unit::TestCase
   def setup
@@ -51,6 +51,8 @@ class VarTest < Test::Unit::TestCase
   
   protected
     def assert_errorinfo(value)
-      assert_equal value, @interp.var("errorInfo").value
+      if @interp.vars.include?("errorInfo")
+        assert_equal value, @interp.var("errorInfo").value
+      end
     end
 end

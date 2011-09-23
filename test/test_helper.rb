@@ -1,5 +1,5 @@
 require "test/unit"
-require File.join(File.dirname(__FILE__), *%w".. lib tcl")
+require File.join(File.dirname(__FILE__), *%w".. lib ruby-tcl")
 
 class Tcl::Interp
   def clear!
