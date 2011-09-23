@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
     'LICENSE',
     'README.rdoc',
   ]
-  s.extensions = ["ext/tcl/extconf.rb"]
+  s.extensions = ["ext/tcl_ext/extconf.rb"]
 
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.7')
   s.rubygems_version = '1.3.7'
