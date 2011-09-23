@@ -37,7 +37,7 @@ Rake::RDocTask.new do |rdoc|
 end
 
 require 'rake/extensiontask'
-Rake::ExtensionTask.new('tcl')
+Rake::ExtensionTask.new('tcl_ext')
 CLEAN.include ['**/*.{o,bundle,jar,so,obj,pdb,lib,def,exp,log}']
 
 task :test => :compile
